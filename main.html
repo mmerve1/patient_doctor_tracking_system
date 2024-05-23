@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Sayfa</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .button {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .button i {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            background: -webkit-linear-gradient(bottom, #2dbd6e, #a6f77b);
+            background-repeat: no-repeat;
+        }
+
+        label {
+            font-family: "Raleway", sans-serif;
+            font-size: 11pt;
+        }
+
+        #forgot-pass {
+            color: #2dbd6e;
+            font-family: "Raleway", sans-serif;
+            font-size: 10pt;
+            margin-top: 3px;
+            text-align: right;
+        }
+
+        #card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        #card-content {
+            padding: 12px 44px;
+        }
+
+        #card-title {
+            font-family: "Raleway Thin", sans-serif;
+            letter-spacing: 4px;
+            padding-bottom: 23px;
+            padding-top: 13px;
+            text-align: center;
+        }
+
+        #signup {
+            color: #2dbd6e;
+            font-family: "Raleway", sans-serif;
+            font-size: 10pt;
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        #submit-btn {
+            background: -webkit-linear-gradient(right, #a6f77b, #2dbd6e);
+            border: none;
+            border-radius: 21px;
+            box-shadow: 0px 1px 8px #24c64f;
+            cursor: pointer;
+            color: white;
+            font-family: "Raleway SemiBold", sans-serif;
+            height: 42.3px;
+            margin: 0 auto;
+            margin-top: 50px;
+            transition: 0.25s;
+            width: 153px;
+        }
+
+        #submit-btn:hover {
+            box-shadow: 0px 1px 18px #24c64f;
+        }
+
+        .form {
+            align-items: left;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-border {
+            background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
+            height: 1px;
+            width: 100%;
+        }
+
+        .form-content {
+            background: #fbfbfb;
+            border: none;
+            outline: none;
+            padding-top: 14px;
+        }
+
+        .underline-title {
+            background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
+            height: 2px;
+            margin: -1.1rem auto 0 auto;
+            width: 89px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hasta ve Doktor Takip Sistemi</h1>
+    <div class="buttons-container">
+        <div class="button" onclick="location.href='/hastalar';">
+            <i class="fas fa-user-injured"></i>
+            <br>
+            Hastalar
+        </div>
+        <div class="button" onclick="location.href='/doktorlar';">
+            <i class="fas fa-user-md"></i>
+            <br>
+            Doktorlar
+        </div>
+        <div class="button" onclick="location.href='/randevular';">
+            <i class="material-icons">event_note</i>
+            <br>
+            Randevular
+        </div>
+        <div class="button" onclick="location.href='/tibbiraporlar';">
+            <i class="fas fa-sticky-note"></i>
+            <br>
+            Tıbbi Raporlar
+        </div>
+        <div class="button" onclick="location.href='/yonetici';">
+            <i class="fas fa-user-tie"></i>
+            <br>
+            Yöneticiler
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: center;">
+        <div id="card">
+            <div id="card-content">
+                <div id="card-title">
+                    <h2>KAYIT OL</h2>
+                    <div class="underline-title"></div>
+                </div>
+                <form method="post" class="form" action="/hastalar/ekle">
+                    <label for="hastaid" style="padding-top:13px">
+                        &nbsp;Hasta ID
+                    </label>
+                    <input id="hastaid" class="form-content" type="text" name="hastaid" required />
+                    <div class="form-border"></div>
+
+                    <label for="ad" style="padding-top:22px">
+                        &nbsp;Ad
+                    </label>
+                    <input id="ad" class="form-content" type="text" name="ad" required />
+                    <div class="form-border"></div>
+
+                    <label for="soyad" style="padding-top:22px">
+                        &nbsp;Soyad
+                    </label>
+                    <input id="soyad" class="form-content" type="text" name="soyad" required />
+                    <div class="form-border"></div>
+
+                    <label for="dogumtarih" style="padding-top:22px">
+                        &nbsp;Doğum Tarihi
+                    </label>
+                    <input id="dogumtarih" class="form-content" type="date" name="dogumtarih" required />
+                    <div class="form-border"></div>
+
+                    <label for="cinsiyet" style="padding-top:22px">
+                        &nbsp;Cinsiyet
+                    </label>
+                    <select id="cinsiyet" class="form-content" name="cinsiyet" required>
+                        <option value="">Seçiniz...</option>
+                        <option value="erkek">Erkek</option>
+                        <option value="kadın">Kadın</option>
+                        <option value="other">Diğer</option>
+                    </select>
+                    <div class="form-border"></div>
+
+                    <label for="telefonnumarasi" style="padding-top:22px">
+                        &nbsp;Telefon Numarası
+                    </label>
+                    <input id="telefonnumarasi" class="form-content" type="tel" name="telefonnumarasi" required />
+                    <div class="form-border"></div>
+
+                    <input id="submit-btn" type="submit" name="submit" value="KAYIT OL" style="margin-top: 20px;" />
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

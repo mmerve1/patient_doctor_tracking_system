@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hastalar Listesi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"], input[type="date"], textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        button, input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        .buttongeri{
+            width: 150px;
+            height:20px;
+            padding: 10px;
+            background-color: beige;
+            color: black;
+            border: 1px solid black;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover, input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <!-- Display existing patients -->
+    <div class="container">
+        <h1>Randevu Listesi</h1>
+        <ul>
+            <% randevular.forEach(function(randevu) { %>
+                <li>
+                    <label>randevu ID:</label> <%= randevu.randevuid %> <br>
+                    <label>hastaid:</label> <%= randevu.hastaid %> <br>
+                    <label>doktorid:</label> <%= randevu.doktorid %> <br>
+                    <label>randevu tarihi:</label> <%= randevu.randevutarihi%> <br>
+                    <label>randevu saati:</label> <%= randevu.randevusaati %> <br>
+                    
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+
+    <!-- Form to add a new patient -->
+    <div class="container">
+        <h2>Yeni Randevu Ekle</h2>
+        <form method="POST" action="/randevular/ekle">
+            <label for="randevuid">Randevu ID:</label>
+            <input type="text" id="randevuid" name="randevuid" required>
+
+            <label for="hastaid">Hastaid:</label>
+            <input type="text" id="hastaid" name="hastaid" required>
+
+            <label for="doktorid">Doktorid:</label>
+            <input type="text" id="doktorid" name="doktorid" required>
+
+            <label for="randevutarihi">Randevu Tarihi:</label>
+            <input type="date" id="randevutarihi" name="randevutarihi" required>
+
+            <label for="randevusaati">Randevu Saati:</label>
+            <input type="date" id="randevusaati" name="randevusaati" required>
+
+            <label for="cinsiyet">Cinsiyet:</label>
+            <select id="cinsiyet" name="cinsiyet" required>
+                <option value="Erkek">Erkek</option>
+                <option value="Kadın">Kadın</option>
+                <option value="Diğer">Diğer</option>
+            </select>
+
+            <label for="telefonnumarasi">Telefon Numarası:</label>
+            <input type="text" id="telefonnumarasi" name="telefonnumarasi" required>
+
+            <label for="adres">Adres:</label>
+            <textarea id="adres" name="adres" required></textarea>
+
+            <input type="submit" value="Randevu Ekle">
+        </form>
+    </div>
+    <div class="buttongeri">
+        <a href="./">Anasayfaya geri dön</a>
+        <i class="fas fa-sticky-note"></i>
+        <br>
+       
+    </div>
+</body>
+</html>

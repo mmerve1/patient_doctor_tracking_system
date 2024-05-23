@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasta Bilgi Güncelleme</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="date"]::-webkit-inner-spin-button {
+            display: none;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hasta Bilgi Güncelleme</h1>
+        <form action="/hastalar/guncelle/<%= hasta.hastaid %>" method="POST">
+            <label for="ad">Ad:</label>
+            <input type="text" id="ad" name="ad" value="<%= hasta.ad %>" required>
+            <label for="soyad">Soyad:</label>
+            <input type="text" id="soyad" name="soyad" value="<%= hasta.soyad %>" required>
+            <label for="dogumtarih">Doğum Tarihi:</label>
+            <input type="date" id="dogumtarih" name="dogumtarih" value="<%= hasta.dogumtarih %>" required>
+            <label for="cinsiyet">Cinsiyet:</label>
+            <select id="cinsiyet" name="cinsiyet" required>
+                <option value="Erkek" <%= hasta.cinsiyet === 'Erkek' ? 'selected' : '' %>>Erkek</option>
+                <option value="Kadın" <%= hasta.cinsiyet === 'Kadın' ? 'selected' : '' %>>Kadın</option>
+                <option value="Diğer" <%= hasta.cinsiyet === 'Diğer' ? 'selected' : '' %>>Diğer</option>
+            </select>
+            <label for="telefonnumarasi">Telefon Numarası:</label>
+            <input type="text" id="telefonnumarasi" name="telefonnumarasi" value="<%= hasta.telefonnumarasi %>" required>
+            <label for="adres">Adres:</label>
+            <input type="text" id="adres" name="adres" value="<%= hasta.adres %>" required>
+            <button type="submit">Güncelle</button>
+        </form>
+    </div>
+</body>
+</html>

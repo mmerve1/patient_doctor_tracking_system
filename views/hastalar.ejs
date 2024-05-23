@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hastalar Listesi</title>
+    <style>
+        body {
+            
+    background: -webkit-linear-gradient(bottom, #2dbd6e, #a6f77b);
+    background-repeat: no-repeat;
+
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"], input[type="date"], textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        button, input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin:3px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .buttongeri{
+            width: 150px;
+            height:20px;
+            padding: 10px;
+            background-color: beige;
+            color: black;
+            border: 1px solid black;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover, input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+       
+<div class="container">
+    <h1>Hasta Listesi</h1>
+    <ul>
+        <% hastalar.forEach(function(hasta) { %>
+            <li>
+                <label>Hasta ID:</label> <%= hasta.hastaid %> <br>
+                    <label>Ad:</label> <%= hasta.ad %> <br>
+                    <label>Soyad:</label> <%= hasta.soyad %> <br>
+                    <label>Doğum Tarihi:</label> <%= hasta.dogumtarih || 'Belirtilmemiş' %> <br>
+                    <label>Cinsiyet:</label> <%= hasta.cinsiyet || 'Belirtilmemiş' %> <br>
+                    <label>Telefon Numarası:</label> <%= hasta.telefonnumarasi || 'Belirtilmemiş' %> <br>
+                    <label>Adres:</label> <%= hasta.adres || 'Belirtilmemiş' %> <br>
+                <form method="POST" action="/hastalar/sil">
+                    <input type="hidden" name="hastaid" value="<%= hasta.hastaid %>">
+                    <input type="submit" value="Hastayı Sil">
+                </form>
+                <form method="GET" action="/hastalar/guncelle/<%= hasta.hastaid %>">
+                    <button type="submit">Güncelle</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+</div>
+
+    
+    <div class="container">
+        <h2>Yeni Hasta Ekle</h2>
+        <form method="POST" action="/hastalar/ekle">
+            <label for="hastaid">Hasta ID:</label>
+            <input type="number" id="hastaid" name="hastaid" required>
+        
+            <label for="ad">Ad:</label>
+            <input type="text" id="ad" name="ad" required>
+        
+            <label for="soyad">Soyad:</label>
+            <input type="text" id="soyad" name="soyad" required>
+        
+            <label for="dogumtarih">Doğum Tarihi:</label>
+            <input type="date" id="dogumtarih" name="dogumtarih" required>
+        
+            <label for="cinsiyet">Cinsiyet:</label>
+            <select id="cinsiyet" name="cinsiyet" required>
+                <option value="Erkek">Erkek</option>
+                <option value="Kadın">Kadın</option>
+                <option value="Diğer">Diğer</option>
+            </select>
+        
+            <label for="telefonnumarasi">Telefon Numarası:</label>
+            <input type="text" id="telefonnumarasi" name="telefonnumarasi" required>
+        
+            <label for="adres">Adres:</label>
+            <input type="text" id="adres" name="adres" required>
+        
+            <input type="submit" value="Hasta Ekle">
+        </form>
+        
+    </div>
+    <div class="buttongeri">
+        <a href="./">Anasayfaya geri dön</a>
+        <i class="fas fa-sticky-note"></i>
+        <br>
+       
+    </div>
+
+
+</body>
+</html>
